@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
-router.get("/shape/:shape", async (req, res) => {
+router.get("ufos/shape/:shape", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -28,7 +28,7 @@ function formatDate(dateString) {
   return formattedDateString;
 }
 
-router.get("/date/:date", async (req, res) => {
+router.get("ufos/date/:date", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -46,7 +46,7 @@ router.get("/date/:date", async (req, res) => {
 });
 
 //BY STATE
-router.get("/state/:state", async (req, res) => {
+router.get("ufos/state/:state", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -65,7 +65,7 @@ router.get("/state/:state", async (req, res) => {
 });
 
 //BY CITY
-router.get("/city/:city", async (req, res) => {
+router.get("ufos/city/:city", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
