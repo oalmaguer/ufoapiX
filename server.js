@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const ufos = require("../routes/ufos");
-const dbConnect = require("../config");
-const UfoModel = require("../UfoModel");
+const ufos = require("./routes/ufos");
+const dbConnect = require("./config");
+const UfoModel = require("./UfoModel");
 
 const router = express.Router();
 dbConnect();

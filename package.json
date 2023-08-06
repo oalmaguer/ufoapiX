@@ -2,11 +2,11 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js && echo server running",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "node ./api/server.js"
+    "vercel-build": "node server.js"
   },
   "keywords": [],
   "author": "",
