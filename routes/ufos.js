@@ -9,11 +9,11 @@ router.get("/", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
-router.get("ufos/shape/:shape", async (req, res) => {
+router.get("/ufos/shape/:shape", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
-  console.log(req.params.limit);
+  console.log("llega shape");
   const result = await UfoModel.find({ shape: req.params.shape }).limit(
     req.params.limit
   );
@@ -28,7 +28,7 @@ function formatDate(dateString) {
   return formattedDateString;
 }
 
-router.get("ufos/date/:date", async (req, res) => {
+router.get("/ufos/date/:date", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -46,7 +46,7 @@ router.get("ufos/date/:date", async (req, res) => {
 });
 
 //BY STATE
-router.get("ufos/state/:state", async (req, res) => {
+router.get("/ufos/state/:state", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -65,14 +65,14 @@ router.get("ufos/state/:state", async (req, res) => {
 });
 
 //BY CITY
-router.get("ufos/city/:city", async (req, res) => {
+router.get("/ufos/city/:city", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
 
   try {
     const { city } = req.params;
-    console.log(city);
+    console.log(req.params);
     const result = await UfoModel.find({
       city: city.toLowerCase(),
     }).limit(req.params.limit);
