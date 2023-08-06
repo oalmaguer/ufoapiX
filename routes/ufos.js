@@ -4,6 +4,10 @@ const UfoModel = require("../UfoModel");
 const app = express();
 
 //Search by shape
+router.get("/", async (req, res) => {
+  res.send("Welcome to the UFO Api!!");
+});
+
 router.get("/ufo/shape/:shape", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
