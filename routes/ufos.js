@@ -5,6 +5,7 @@ const app = express();
 
 //Search by shape
 router.get("/", async (req, res) => {
+  console.log("Llega a main response");
   res.send("Welcome to the UFO Api!!");
 });
 
