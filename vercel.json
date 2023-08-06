@@ -1,6 +1,14 @@
 {
   "version": 2,
-  "buildCommand": "node server.js",
-  "public": true,
-  "redirects": [{ "source": "/", "destination": "/api/ufos" }]
+  "builds": [
+    {
+      "src": "./index.js"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/ufos/"
+    }
+  ]
 }
