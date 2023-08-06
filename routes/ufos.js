@@ -4,11 +4,11 @@ const UfoModel = require("../UfoModel");
 const app = express();
 
 //Search by shape
-router.get("/ufo", async (req, res) => {
+router.get("/", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
-router.get("/ufo/shape/:shape", async (req, res) => {
+router.get("/shape/:shape", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -27,7 +27,7 @@ function formatDate(dateString) {
   return formattedDateString;
 }
 
-router.get("/ufo/date/:date", async (req, res) => {
+router.get("/date/:date", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -45,7 +45,7 @@ router.get("/ufo/date/:date", async (req, res) => {
 });
 
 //BY STATE
-router.get("/ufo/state/:state", async (req, res) => {
+router.get("/state/:state", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
@@ -64,7 +64,7 @@ router.get("/ufo/state/:state", async (req, res) => {
 });
 
 //BY CITY
-router.get("/ufo/city/:city", async (req, res) => {
+router.get("/city/:city", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
