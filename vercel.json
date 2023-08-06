@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/ufo"
+      "source": "/ufo/(.*)",
+      "destination": "/ufo/$1"
     }
   ]
 }
