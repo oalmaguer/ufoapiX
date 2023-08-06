@@ -4,7 +4,7 @@ const UfoModel = require("../UfoModel");
 const app = express();
 
 //Search by shape
-router.get("/", async (req, res) => {
+router.get("/ufo", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
