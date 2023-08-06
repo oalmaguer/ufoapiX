@@ -8,7 +8,7 @@ const UfoModel = require("./UfoModel");
 const router = express.Router();
 dbConnect();
 
-app.use("", ufos);
+app.use("/api/ufos", ufos);
 
 const setCache = function (req, res, next) {
   //keep cache for 5 minutes
