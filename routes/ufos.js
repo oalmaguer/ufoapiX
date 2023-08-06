@@ -72,7 +72,7 @@ router.get("/ufos/city/:city", async (req, res) => {
 
   try {
     const { city } = req.params;
-    console.log(req.params);
+    console.log("params: ", req.params);
     const result = await UfoModel.find({
       city: city.toLowerCase(),
     }).limit(req.params.limit);
