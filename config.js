@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+dotenv.config();
 const dbConnect = () => {
   try {
-    mongoose.connect(
-      "mongodb+srv://almaguero95:mzToli102359.@gamingcluster.nci98l6.mongodb.net/GamingCluster?retryWrites=true&w=majority"
-    );
+    mongoose.connect(process.env.DB_URI);
     console.log("connected");
   } catch (error) {
     console.log(error);
