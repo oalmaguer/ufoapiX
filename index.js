@@ -27,16 +27,22 @@ app.get("/", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
-app.get("ufos/shape/:shape", async (req, res) => {
-  if (!req.params.limit) {
-    req.params.limit = 20;
-  }
-  console.log("llega shape");
-  const result = await UfoModel.find({ shape: req.params.shape }).limit(
-    req.params.limit
-  );
+app.get("/ufos/shape/:shape/page/:page?", async (req, res) => {
+  const page = parseInt(req.params.page) || 1; // Extract the "page" parameter from the query string
+  // Use the "page" value to determine the skip value for pagination
+  const skip = (page - 1) * 20;
+  try {
+    const result = await UfoModel.find({
+      shape: req.params.shape,
+    })
+      .skip(skip)
+      .limit(20);
 
-  res.send(result);
+    res.send(result);
+  } catch (err) {
+    res.status(200).send("Theres been an error with your request");
+    console.error("Error: ", err);
+  }
 });
 
 function formatDate(dateString) {
@@ -46,15 +52,18 @@ function formatDate(dateString) {
   return formattedDateString;
 }
 
-app.get("/ufos/date/:date", async (req, res) => {
-  if (!req.params.limit) {
-    req.params.limit = 20;
-  }
+app.get("/ufos/date/:date/page/:page?", async (req, res) => {
+  const page = parseInt(req.params.page) || 1; // Extract the "page" parameter from the query string
+
+  // Use the "page" value to determine the skip value for pagination
+  const skip = (page - 1) * 20;
 
   try {
     const result = await UfoModel.find({
       date: formatDate(req.params.date),
-    }).limit(req.params.limit);
+    })
+      .skip(skip)
+      .limit(20);
 
     res.send(result);
   } catch (err) {
@@ -64,17 +73,20 @@ app.get("/ufos/date/:date", async (req, res) => {
 });
 
 //BY STATE
-app.get("/ufos/state/:state", async (req, res) => {
-  if (!req.params.limit) {
-    req.params.limit = 20;
-  }
+app.get("/ufos/state/:state/page/:page?", async (req, res) => {
+  const page = parseInt(req.params.page) || 1; // Extract the "page" parameter from the query string
+
+  // Use the "page" value to determine the skip value for pagination
+  const skip = (page - 1) * 20;
 
   try {
     const { state } = req.params;
     console.log(state);
     const result = await UfoModel.find({
       state: state.replace(" ", "").toLowerCase().toUpperCase(),
-    }).limit(req.params.limit);
+    })
+      .skip(skip)
+      .limit(20);
     res.send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
@@ -83,17 +95,20 @@ app.get("/ufos/state/:state", async (req, res) => {
 });
 
 //BY CITY
-app.get("/ufos/city/:city", async (req, res) => {
-  if (!req.params.limit) {
-    req.params.limit = 20;
-  }
+app.get("/ufos/city/:city/page/:page?", async (req, res) => {
+  const page = parseInt(req.params.page) || 1; // Extract the "page" parameter from the query string
+
+  // Use the "page" value to determine the skip value for pagination
+  const skip = (page - 1) * 20;
 
   try {
     const { city } = req.params;
     console.log(city);
     const result = await UfoModel.find({
       city: city.replace(" ", "").toLowerCase(),
-    }).limit(req.params.limit);
+    })
+      .skip(skip)
+      .limit(20);
     res.send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
