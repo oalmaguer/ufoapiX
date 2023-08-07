@@ -23,7 +23,16 @@ const setCache = function (req, res, next) {
 
 // app.get("/api/ufos/:city", routes);
 app.get("/", async (req, res) => {
-  res.send("Welcome to the UFO Api!!");
+  res.send(`
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+  <h1>Welcome to the UFO Api!!</h1>
+  <h3>https://ufoapix.vercel.app/ufos/ = Get 20 random UFO reports </h3>
+  <h3>https://ufoapix.vercel.app/ufos/city/losangeles/page/1 = Get Reports by city, page for pagination</h3>
+  <h3>https://ufoapix.vercel.app/ufos/state/ny/page/1 = Get Reports by state, page for pagination</h3>
+  <h3>https://ufoapix.vercel.app/ufos/shape/triangle/page/1 = Get Reports by shape, page for pagination</h3>
+  <h3>https://ufoapix.vercel.app/ufos/date/2019-03-29/page/1 = Get Reports by date, page for pagination</h3>
+  </div>
+  `);
 });
 
 app.get("/ufos/shape/:shape/page/:page?", async (req, res) => {
