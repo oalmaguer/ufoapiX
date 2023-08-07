@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   res.send("Welcome to the UFO Api!!");
 });
 
-router.get("/ufos/shape/:shape", async (req, res) => {
+router.get("ufos/shape/:shape", async (req, res) => {
   if (!req.params.limit) {
     req.params.limit = 20;
   }
