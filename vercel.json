@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/ufos/(.*)",
-      "destination": "/"
+      "destination": "./index.js"
     }
   ]
 }
