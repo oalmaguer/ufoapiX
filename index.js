@@ -73,7 +73,7 @@ app.get("/ufos/state/:state", async (req, res) => {
     const { state } = req.params;
     console.log(state);
     const result = await UfoModel.find({
-      state: state.toUpperCase(),
+      state: state.replace(" ", "").toLowerCase().toUpperCase(),
     }).limit(req.params.limit);
     res.send(result);
   } catch (err) {
