@@ -73,7 +73,7 @@ app.get("/ufos/date/:date/page/:page?", async (req, res) => {
       .skip(skip)
       .limit(20);
 
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
     console.error("Error: ", err);
@@ -95,7 +95,7 @@ app.get("/ufos/state/:state/page/:page?", async (req, res) => {
     })
       .skip(skip)
       .limit(20);
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
     console.error("Error: ", err);
@@ -117,7 +117,7 @@ app.get("/ufos/city/:city/page/:page?", async (req, res) => {
     })
       .skip(skip)
       .limit(20);
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
     console.error("Error: ", err);
@@ -138,7 +138,7 @@ app.get("/ufos", async (req, res) => {
     const result = await UfoModel.aggregate([{ $sample: { size: 20 } }])
       .skip(skip)
       .limit(20);
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
     console.error("Error: ", err);
