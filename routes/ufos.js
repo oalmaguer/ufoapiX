@@ -76,7 +76,7 @@ router.get("/ufos/city/:city", async (req, res) => {
     const result = await UfoModel.find({
       city: city.toLowerCase(),
     }).limit(req.params.limit);
-    res.send(result);
+    res.json(result);
   } catch (err) {
     res.status(200).send("Theres been an error with your request");
     console.error("Error: ", err);
