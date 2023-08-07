@@ -23,7 +23,6 @@ const setCache = function (req, res, next) {
 
 // app.get("/api/ufos/:city", routes);
 app.get("/", async (req, res) => {
-  console.log("Llega a main response");
   res.send("Welcome to the UFO Api!!");
 });
 
@@ -107,6 +106,27 @@ app.get("/ufos/city/:city/page/:page?", async (req, res) => {
     const result = await UfoModel.find({
       city: city.replace(" ", "").toLowerCase(),
     })
+      .skip(skip)
+      .limit(20);
+    res.send(result);
+  } catch (err) {
+    res.status(200).send("Theres been an error with your request");
+    console.error("Error: ", err);
+  }
+});
+
+//RANDOM
+app.get("/ufos", async (req, res) => {
+  const page = parseInt(req.params.page) || 1; // Extract the "page" parameter from the query string
+
+  // Use the "page" value to determine the skip value for pagination
+  const skip = (page - 1) * 20;
+
+  try {
+    UfoModel.aggregate([{ $sample: { size: 20 } }]);
+    const { city } = req.params;
+    console.log(city);
+    const result = await UfoModel.aggregate([{ $sample: { size: 20 } }])
       .skip(skip)
       .limit(20);
     res.send(result);
