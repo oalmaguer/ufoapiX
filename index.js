@@ -90,9 +90,9 @@ app.get("/ufos/city/:city", async (req, res) => {
 
   try {
     const { city } = req.params;
-    console.log("params: ", req.params);
+    console.log(city);
     const result = await UfoModel.find({
-      city: city.toLowerCase(),
+      city: city.replace(" ", "").toLowerCase(),
     }).limit(req.params.limit);
     res.send(result);
   } catch (err) {
